@@ -15,13 +15,22 @@ function initCalendlyPopup() {
     const ctaBtns = document.querySelectorAll(`a[href*="calendly.com"]`);
 
     ctaBtns.forEach(btn => {
+        // Pre-fetch on hover to speed up the actual click response
+        btn.addEventListener('mouseenter', () => {
+            if (window.Calendly) {
+                // Subtle hint to Calendly to prepare
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = CALENDLY_URL;
+                document.head.appendChild(link);
+            }
+        }, { once: true });
+
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Use Calendly's widget if loaded
             if (window.Calendly) {
                 Calendly.initPopupWidget({ url: CALENDLY_URL });
             } else {
-                // Fallback: open in new tab
                 window.open(CALENDLY_URL, '_blank');
             }
         });
