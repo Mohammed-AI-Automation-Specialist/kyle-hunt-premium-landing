@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Base Styles & CSS Variables
+   ========================================================================== */
+@import './hero.css';
+@import './sections.css';
+@import './nav.css';
+
+   :root {
+    /* Colors - Dark Premium Theme */
+    --color-bg-deep: #05050A; /* Deep organic black */
+    --color-bg-midnight: #0A0F1A; /* Midnight blue tint */
+    --color-accent-blue: #3E8BFF; /* Electric Blue */
+    --color-accent-gold: #D4AF37; /* Elegant Gold */
+    --color-text-main: #FFFFFF;
+    --color-text-muted: #8A93A6;
+    
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing & Layout */
+    --max-width: 1200px;
+    --section-padding: 100px 20px;
+    
+    /* Effects */
+    --transition-smooth: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-deep);
+    background-image: radial-gradient(circle at top right, var(--color-bg-midnight) 0%, transparent 50%),
+                      radial-gradient(circle at bottom left, var(--color-bg-midnight) 0%, transparent 50%);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Hide default scrollbar for lenis smooth experience if wanted, though lenis handles it well */
+}
+
+/* Typography Base */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+/* Base button reset */
+button, a {
+    all: unset;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Global Micro-interactions
+   ========================================================================== */
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-blue), var(--color-accent-gold));
+    width: 0%;
+    z-index: 9999;
+}
+
+/* Cursor Orb */
+.cursor-orb {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    mix-blend-mode: screen;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%); /* Center on mouse */
+    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+}
+
+.cursor-orb.expand {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, var(--color-accent-blue) 0%, rgba(255,255,255,0) 70%);
+}
+
+/* Lenis Integration Requirements */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+

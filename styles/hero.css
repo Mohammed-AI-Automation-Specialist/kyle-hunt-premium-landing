@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Hero Section Styles
+   ========================================================================== */
+
+   .hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--section-padding);
+    position: relative;
+}
+
+/* Background elements (Particles, lines) will be added here */
+.hero-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero-headline {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    margin-bottom: 24px;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    max-width: 900px;
+}
+
+.hero-subheadline {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin-bottom: 48px;
+}
+
+/* Premium CTA Button */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(62, 139, 255, 0.2) 0%, rgba(62, 139, 255, 0.05) 100%);
+    border: 1px solid rgba(62, 139, 255, 0.3);
+    border-radius: 100px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    box-shadow: 0 0 20px rgba(62, 139, 255, 0.1);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-accent-blue) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 40px rgba(62, 139, 255, 0.4);
+    border-color: var(--color-accent-blue);
+}
+
+.cta-button:hover::before {
+    opacity: 0.1;
+}
+
+/* Video Placeholder Style */
+.hero-video-wrapper {
+    margin-top: 80px;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    
+    /* GSAP Initial State for Cinematic Reveal */
+    clip-path: inset(20% 20% 20% 20% round 20px);
+    transform: scale(0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-play-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: var(--transition-smooth);
+}
+
+.hero-video-wrapper:hover .video-play-icon {
+    transform: scale(1.1);
+    background: rgba(62, 139, 255, 0.2);
+}
+
+/* ── Mobile Layout Fixes for Video ── */
+@media (max-width: 768px) {
+    .hero-video-wrapper {
+        margin-top: 40px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 100vw;
+    }
+}

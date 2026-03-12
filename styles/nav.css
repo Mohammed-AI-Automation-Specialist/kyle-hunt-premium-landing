@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Navigation, Video Overlay, Dashboard Parallax — Premium Additions
+   ========================================================================== */
+
+/* ─── Sticky Navigation ─────────────────────────────────────────────────── */
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Adding padding inside instead of height for better liquid feel */
+    padding: 15px 40px;
+}
+
+.site-nav.scrolled {
+    padding: 10px 40px;
+    background: linear-gradient(135deg, rgba(10, 10, 15, 0.6) 0%, rgba(20, 20, 25, 0.4) 100%);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(100, 150, 255, 0.1);
+}
+
+.nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.nav-logo-dot { color: var(--color-accent-blue); }
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    flex: 1;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.nav-links a:hover { color: #fff; }
+
+.nav-cta {
+    padding: 10px 22px !important;
+    font-size: 0.85rem !important;
+    white-space: nowrap;
+    border: 1px solid rgba(62, 139, 255, 0.4) !important;
+    border-radius: 100px !important;
+    background: rgba(62, 139, 255, 0.1) !important;
+    color: #fff !important;
+    transition: all 0.3s ease !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.nav-cta:hover {
+    background: rgba(62, 139, 255, 0.25) !important;
+    box-shadow: 0 0 20px rgba(62, 139, 255, 0.3) !important;
+}
+
+/* Hamburger Menu - hidden on desktop */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+/* Mobile Menu - hidden by default */
+.nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(5, 5, 10, 0.97);
+    border-top: 1px solid var(--glass-border);
+    padding: 16px 0;
+}
+
+.nav-mobile-menu.open { display: flex; }
+
+.nav-mobile-menu a {
+    padding: 14px 40px;
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-mobile-menu a:hover { color: #fff; }
+
+.nav-mobile-menu .mobile-cta {
+    color: var(--color-accent-blue) !important;
+    font-weight: 700;
+    border-bottom: none;
+}
+
+/* Compensate for fixed nav height */
+.hero-section { padding-top: calc(100px + 70px); }
+
+/* ─── Hero Video — Loom Embed ───────────────────────────────────────────── */
+.hero-video-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(5, 5, 10, 0.6);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.5s ease;
+}
+
+.video-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-overlay-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+}
+
+/* ─── Dashboard Parallax Section ────────────────────────────────────────── */
+.parallax-section {
+    overflow: hidden;
+    padding-bottom: 120px;
+}
+
+.parallax-scene {
+    position: relative;
+    max-width: 1100px;
+    margin: 60px auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.parallax-layer {
+    position: relative;
+    flex: 1;
+}
+
+.dash-card {
+    position: relative;
+    padding: 28px 32px;
+    border-radius: 16px;
+    width: 100%;
+    pointer-events: auto;
+}
+
+/* Specific styling without absolute positions */
+.dash-front {
+    border-color: rgba(62, 139, 255, 0.2);
+    box-shadow: 0 0 30px rgba(62, 139, 255, 0.08);
+}
+
+.dash-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+}
+
+.dash-row:last-child { border-bottom: none; }
+.dash-row .dash-val { margin-left: auto; color: #fff; font-weight: 600; }
+
+.dash-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.dash-dot.green { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.dash-dot.yellow { background: #eab308; box-shadow: 0 0 8px #eab308; }
+.dash-dot.red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+
+.dash-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent-blue);
+    margin-bottom: 16px;
+}
+
+.dash-bars { display: flex; flex-direction: column; gap: 10px; }
+
+.dash-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+.dash-bar-item > span:first-child { width: 44px; flex-shrink: 0; }
+.dash-bar-item > span:last-child  { width: 36px; text-align: right; flex-shrink: 0; color: #fff; }
+
+.bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent-blue), rgba(62,139,255,0.4));
+    border-radius: 3px;
+}
+
+.dash-alert-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #22c55e;
+    margin-bottom: 4px;
+}
+
+.dash-alert-sub {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+/* ─── Enhanced Mobile Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .site-nav { padding: 0 20px; }
+    .nav-cta { display: none; }
+}
+
+@media (max-width: 768px) {
+    :root { --section-padding: 70px 20px; }
+
+    .hero-section {
+        padding-top: calc(70px + 70px);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero-headline { font-size: 2.4rem; }
+    .hero-subheadline { font-size: 1rem; }
+
+    .section-title { font-size: 2rem; }
+    .section-subtitle { font-size: 0.95rem; }
+
+    .pipeline-node { grid-template-columns: 40px 1fr; gap: 16px; }
+    .node-card { padding: 24px; }
+
+    .parallax-scene { 
+        flex-direction: column; 
+        gap: 20px;
+    }
+    
+    .parallax-layer { width: 100%; max-width: 450px; margin: 0 auto; }
+
+    .calculator-wrapper { padding: 28px 20px; }
+    .calc-inputs { grid-template-columns: 1fr; }
+
+    .carousel-card { width: 300px; padding: 28px; }
+
+    .pricing-grid { grid-template-columns: 1fr; }
+    .featured-card { transform: none; }
+
+    .final-cta-headline { font-size: 2.2rem; }
+    .final-cta-section { padding: 100px 20px; }
+
+    .results-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .hero-headline { font-size: 1.9rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+}
