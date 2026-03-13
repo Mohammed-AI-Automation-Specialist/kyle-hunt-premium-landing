@@ -581,7 +581,9 @@
 /* ─── Responsive ───────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
     :root { --section-padding: 70px 20px; }
-    .section-title { font-size: 2rem; }
+    .section-title { font-size: 2.1rem; line-height: 1.3; }
+    .solution-intro .section-title { margin-bottom: 30px; }
+    .solution-intro .section-subtitle { margin-top: 20px; }
     .pipeline-node { grid-template-columns: 40px 1fr; gap: 16px; }
     .calculator-wrapper { padding: 30px 24px; }
     .calc-inputs { grid-template-columns: 1fr; }
