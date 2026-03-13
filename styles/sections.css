@@ -499,17 +499,20 @@
 }
 
 .featured-card {
-    border-color: rgba(62, 139, 255, 0.35);
-    box-shadow: 0 0 60px rgba(62, 139, 255, 0.12);
+    border-color: rgba(62, 139, 255, 0.45);
+    box-shadow: 0 0 60px rgba(62, 139, 255, 0.15);
     transform: scale(1.02);
-    padding-top: 64px; /* More room for the badge */
+    margin-top: 15px; /* Offset for the badge */
 }
 
 .featured-badge {
     position: absolute;
-    top: 15px; /* Move inside the card since we have overflow constraints elsewhere */
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
+    width: fit-content;
+    white-space: nowrap;
+    z-index: 10;
     background: linear-gradient(135deg, var(--color-accent-blue), #2563eb);
     color: #fff;
     font-size: 0.75rem;
