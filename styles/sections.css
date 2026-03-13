@@ -25,7 +25,7 @@
 
 .section-title {
     font-size: clamp(2.2rem, 4vw, 3.5rem);
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 20px;
 }
 
@@ -495,17 +495,19 @@
     position: relative;
     transition: var(--transition-smooth);
     transform-style: preserve-3d;
+    overflow: visible !important; /* Allow badge to show outside if needed, or prevent clipping */
 }
 
 .featured-card {
     border-color: rgba(62, 139, 255, 0.35);
     box-shadow: 0 0 60px rgba(62, 139, 255, 0.12);
     transform: scale(1.02);
+    padding-top: 64px; /* More room for the badge */
 }
 
 .featured-badge {
     position: absolute;
-    top: -14px;
+    top: 15px; /* Move inside the card since we have overflow constraints elsewhere */
     left: 50%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, var(--color-accent-blue), #2563eb);
