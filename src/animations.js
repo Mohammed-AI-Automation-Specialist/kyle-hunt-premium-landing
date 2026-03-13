@@ -179,6 +179,18 @@ function initFinalCTA() {
         ease: 'power4.out',
         delay: 0.2
     });
+
+    // Ensure the button is visible and animated
+    gsap.from('#final-cta-btn', {
+        scrollTrigger: {
+            trigger: '.final-cta-section',
+            start: 'top 85%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
 }
 
 /* ── 3D Card Tilt on Hover ────────────────────────────────────────── */
