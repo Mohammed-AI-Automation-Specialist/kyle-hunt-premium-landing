@@ -11,6 +11,7 @@ export function initAnimations() {
     gsap.set('.final-cta-headline', { clipPath: 'inset(0 0 100% 0)' });
 
     initHeroAnimation();
+    initSectionStacking();
     initProblemCards();
     initChaosGraph();
     initSystemsPipeline();
@@ -44,8 +45,8 @@ function initHeroAnimation() {
     }, '-=0.4')
     .from('.hero-video-wrapper', {
         duration: 1.6,
-        clipPath: 'inset(20% 20% 20% 20% round 20px)',
-        scale: 0.9,
+        clipPath: 'inset(10% 10% 10% 10% round 20px)',
+        scale: 0.98,
         opacity: 0,
         ease: 'power4.inOut'
     }, '-=0.8');
