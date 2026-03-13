@@ -4,10 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initAnimations() {
-    // Set GSAP initial states for all animated elements
-    gsap.set('.problem-card', { opacity: 0, y: 60 });
-    gsap.set('.pipeline-node', { opacity: 0, x: -40 });
-    gsap.set('.result-stat', { opacity: 0, y: 40 });
+    // Set GSAP initial states only for transform/blur, not opacity 0 (to avoid invisible text if JS fails)
+    gsap.set('.problem-card', { y: 60 });
+    gsap.set('.pipeline-node', { x: -40 });
+    gsap.set('.result-stat', { y: 40 });
     gsap.set('.final-cta-headline', { clipPath: 'inset(0 0 100% 0)' });
 
     initHeroAnimation();
@@ -23,37 +23,32 @@ export function initAnimations() {
 
 /* ── Hero Cinematic Entry ─────────────────────────────────────────── */
 function initHeroAnimation() {
-    // Set initial states via GSAP (not CSS) so elements are visible if JS fails
-    gsap.set('.hero-headline', { opacity: 0, y: 40, filter: 'blur(6px)' });
-    gsap.set('.hero-subheadline', { opacity: 0, y: 14 });
-    gsap.set('.cta-button', { opacity: 0, y: 20 });
-    gsap.set('.hero-video-wrapper', { clipPath: 'inset(20% 20% 20% 20% round 20px)', scale: 0.95 });
-
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.to('.hero-headline', {
-        duration: 0.9,
-        y: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
+    tl.from('.hero-headline', {
+        duration: 1.2,
+        y: 60,
+        opacity: 0,
+        filter: 'blur(10px)',
     })
-    .fromTo('.hero-subheadline',
-        { opacity: 0, y: 14 },
-        { duration: 0.7, opacity: 1, y: 0 },
-        '-=0.3'
-    )
-    .to('.cta-button', {
-        duration: 0.6,
-        opacity: 1,
-        y: 0,
+    .from('.hero-subheadline', {
+        duration: 0.8,
+        opacity: 0,
+        y: 20
+    }, '-=0.6')
+    .from('.cta-button', {
+        duration: 0.8,
+        opacity: 0,
+        y: 20,
         ease: 'back.out(1.7)'
-    }, '-=0.2')
-    .to('.hero-video-wrapper', {
-        duration: 1.4,
-        clipPath: 'inset(0% 0% 0% 0% round 20px)',
-        scale: 1,
+    }, '-=0.4')
+    .from('.hero-video-wrapper', {
+        duration: 1.6,
+        clipPath: 'inset(20% 20% 20% 20% round 20px)',
+        scale: 0.9,
+        opacity: 0,
         ease: 'power4.inOut'
-    }, '-=0.3');
+    }, '-=0.8');
 
     // Pulsing glow on CTA
     gsap.to('#hero-cta', {
