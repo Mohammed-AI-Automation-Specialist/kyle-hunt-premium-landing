@@ -43,55 +43,6 @@ body {
     position: relative;
 }
 
-/* ─── Ultra-Premium Aesthetic Foundation ─────────────────────────────────── */
-
-/* 1. Aurora Mesh Gradients (Ambient Background Glows) */
-.aurora-container {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    opacity: 0.5;
-    filter: blur(100px);
-}
-
-.aurora-orb {
-    position: absolute;
-    width: 60vw;
-    height: 60vw;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--color-accent-blue) 0%, transparent 70%);
-    opacity: 0.15;
-    mix-blend-mode: screen;
-    animation: aurora-float 20s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
-}
-
-.aurora-orb:nth-child(2) {
-    top: -10%;
-    right: -10%;
-    background: radial-gradient(circle, #D4AF37 0%, transparent 70%);
-    opacity: 0.1;
-    animation-duration: 25s;
-    animation-delay: -5s;
-}
-
-.aurora-orb:nth-child(3) {
-    bottom: -10%;
-    left: 10%;
-    background: radial-gradient(circle, #7000FF 0%, transparent 70%);
-    opacity: 0.1;
-    animation-duration: 30s;
-    animation-delay: -10s;
-}
-
-@keyframes aurora-float {
-    0% { transform: translate(-10%, -10%) scale(1); }
-    100% { transform: translate(10%, 10%) scale(1.1); }
-}
-/* Hide default scrollbar for lenis smooth experience if wanted, though lenis handles it well */
-
-
 /* Typography Base */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
