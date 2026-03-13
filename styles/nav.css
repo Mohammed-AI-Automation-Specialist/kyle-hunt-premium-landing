@@ -272,9 +272,16 @@
 /* ─── Enhanced Mobile Responsive ───────────────────────────────────────── */
 @media (max-width: 900px) {
     .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
+    .nav-hamburger { display: none !important; }
+    .nav-mobile-menu { display: none !important; }
     .site-nav { padding: 0 20px; }
-    .nav-cta { display: none; }
+    /* Keep the CTA button visible on mobile — clean minimal nav */
+    .nav-cta {
+        display: inline-flex !important;
+        padding: 9px 18px !important;
+        font-size: 0.8rem !important;
+        margin-left: auto;
+    }
 }
 
 @media (max-width: 768px) {
