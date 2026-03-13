@@ -43,12 +43,11 @@ function initHeroAnimation() {
         ease: 'back.out(1.7)'
     }, '-=0.4')
     .from('.hero-video-wrapper', {
-        duration: 1.4,
-        clipPath: 'inset(15% 15% 15% 15% round 20px)',
-        scale: 0.96,
+        duration: 1.2,
         opacity: 0,
-        ease: 'power3.inOut'
-    }, '-=0.6');
+        y: 30,
+        ease: 'power3.out'
+    }, '-=0.4');
 
     // Pulsing glow on CTA
     gsap.to('#hero-cta', {
