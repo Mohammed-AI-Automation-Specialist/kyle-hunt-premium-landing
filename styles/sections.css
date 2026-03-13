@@ -50,9 +50,39 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 💎 Glass Shimmer Effect */
+.glass-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.03) 30%,
+        rgba(255, 255, 255, 0.1) 32%,
+        rgba(255, 255, 255, 0.03) 34%,
+        transparent 40%
+    );
+    transform: rotate(-10deg);
+    pointer-events: none;
+    animation: glass-shimmer 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes glass-shimmer {
+    0% { left: -150%; opacity: 0; }
+    10% { opacity: 0.5; }
+    20% { left: 150%; opacity: 0; }
+    100% { left: 150%; opacity: 0; }
 }
 
 /* ─── Problem Section ──────────────────────────────────────────────────── */

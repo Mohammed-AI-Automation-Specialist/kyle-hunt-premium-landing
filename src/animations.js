@@ -19,23 +19,40 @@ export function initAnimations() {
     initTiltCards();
     initMagneticButtons();
     initParticles();
+    initSpotlight();
+}
+
+/**
+ * Helper to split text into spans for character-based animation
+ */
+function splitText(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+    const text = el.innerText;
+    el.innerHTML = text.split('').map(char => 
+        `<span class="char" style="display:inline-block;white-space:pre;">${char}</span>`
+    ).join('');
+    return el.querySelectorAll('.char');
 }
 
 /* ── Hero Cinematic Entry ─────────────────────────────────────────── */
 function initHeroAnimation() {
-    // Set initial states via GSAP (not CSS) so elements are visible if JS fails
-    gsap.set('.hero-headline', { opacity: 0, y: 40, filter: 'blur(6px)' });
+    const chars = splitText('.hero-headline');
+    
+    gsap.set(chars, { opacity: 0, y: 30, filter: 'blur(10px)' });
     gsap.set('.hero-subheadline', { opacity: 0, y: 14 });
     gsap.set('.cta-button', { opacity: 0, y: 20 });
     gsap.set('.hero-video-wrapper', { clipPath: 'inset(20% 20% 20% 20% round 20px)', scale: 0.95 });
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.to('.hero-headline', {
-        duration: 0.9,
+    tl.to(chars, {
+        duration: 0.8,
         y: 0,
         opacity: 1,
         filter: 'blur(0px)',
+        stagger: 0.03,
+        ease: 'expo.out'
     })
     .fromTo('.hero-subheadline',
         { opacity: 0, y: 14 },
@@ -175,15 +192,40 @@ function initResultStats() {
 
 /* ── Final CTA Headline Mask Reveal ───────────────────────────────── */
 function initFinalCTA() {
-    gsap.to('.final-cta-headline', {
+    const chars = splitText('.final-cta-headline');
+    gsap.set(chars, { opacity: 0, y: 40, filter: 'blur(10px)' });
+
+    gsap.to(chars, {
         scrollTrigger: {
             trigger: '.final-cta-section',
             start: 'top 75%'
         },
-        clipPath: 'inset(0 0 0% 0)',
-        duration: 1.2,
-        ease: 'power4.out',
-        delay: 0.2
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        stagger: 0.02,
+        duration: 1,
+        ease: 'power3.out'
+    });
+}
+
+/**
+ * Global Background Spotlight Effect
+ */
+function initSpotlight() {
+    const aurora = document.querySelector('.aurora-container');
+    if (!aurora) return;
+
+    window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40;
+        const y = (e.clientY / window.innerHeight - 0.5) * 40;
+        
+        gsap.to('.aurora-container', {
+            x: x,
+            y: y,
+            duration: 2,
+            ease: 'power2.out'
+        });
     });
 }
 
