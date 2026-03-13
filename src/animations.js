@@ -94,8 +94,13 @@ function initChaosGraph() {
     const container = document.getElementById('chaos-graph');
     if (!container) return;
 
+    const isMobile = window.innerWidth <= 768;
+    const chaosX = isMobile ? 20 : 10;
+    const systemX = isMobile ? 480 : 640;
+    const systemFontSize = isMobile ? 18 : 14;
+
     container.innerHTML = `
-        <svg viewBox="0 0 1000 260" width="100%" height="100%" preserveAspectRatio="none" style="padding:10px">
+        <svg viewBox="0 0 1000 260" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" style="padding:10px">
             <defs>
                 <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style="stop-color:#3E8BFF;stop-opacity:1" />
@@ -103,8 +108,8 @@ function initChaosGraph() {
                 </linearGradient>
             </defs>
             <!-- Labels -->
-            <text x="10" y="30" fill="rgba(255,255,255,0.35)" font-size="14" font-family="Inter">Chaos</text>
-            <text x="640" y="30" fill="#3E8BFF" font-size="14" font-family="Inter">Systems Installed</text>
+            <text x="${chaosX}" y="35" fill="rgba(255,255,255,0.35)" font-size="16" font-family="Inter">Chaos</text>
+            <text x="${systemX}" y="35" fill="#3E8BFF" font-size="${systemFontSize}" font-family="Inter" font-weight="600">Phase: Scaling Systems</text>
             <!-- Chaos Line -->
             <path id="chaos-path" d="M 0,200 Q 80,150 160,220 T 320,140 T 480,190 T 600,100" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
             <!-- System Line -->
