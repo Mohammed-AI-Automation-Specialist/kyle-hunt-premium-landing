@@ -11,7 +11,6 @@ export function initAnimations() {
     gsap.set('.final-cta-headline', { clipPath: 'inset(0 0 100% 0)' });
 
     initHeroAnimation();
-    initSectionStacking();
     initProblemCards();
     initChaosGraph();
     initSystemsPipeline();
@@ -44,12 +43,12 @@ function initHeroAnimation() {
         ease: 'back.out(1.7)'
     }, '-=0.4')
     .from('.hero-video-wrapper', {
-        duration: 1.6,
-        clipPath: 'inset(10% 10% 10% 10% round 20px)',
-        scale: 0.98,
+        duration: 1.4,
+        clipPath: 'inset(15% 15% 15% 15% round 20px)',
+        scale: 0.96,
         opacity: 0,
-        ease: 'power4.inOut'
-    }, '-=0.8');
+        ease: 'power3.inOut'
+    }, '-=0.6');
 
     // Pulsing glow on CTA
     gsap.to('#hero-cta', {

@@ -93,9 +93,7 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(10px);
     
-    /* GSAP Initial State for Cinematic Reveal */
-    clip-path: inset(20% 20% 20% 20% round 20px);
-    transform: scale(0.95);
+    /* GSAP will handle the revealing animation */
     display: flex;
     justify-content: center;
     align-items: center;

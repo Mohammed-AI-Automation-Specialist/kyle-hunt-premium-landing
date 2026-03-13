@@ -2,18 +2,6 @@
    All Sections — Premium Landing Page
    ========================================================================== */
 
-/* ─── Shared Utilities ─────────────────────────────────────────────────── */
-.stack-section {
-    position: relative;
-    z-index: 1;
-    background: var(--color-bg-deep); /* Ensure background is solid for stacking */
-}
-
-/* Layer sections manually to ensure proper overlap */
-#hero { z-index: 5; }
-#problem { z-index: 4; }
-#solution { z-index: 3; }
-#systems { z-index: 2; }
 #results { z-index: 1; }
 
 .text-center { text-align: center; }
