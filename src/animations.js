@@ -36,7 +36,7 @@ function initHeroAnimation() {
         opacity: 0,
         y: 20
     }, '-=0.6')
-    .from('.cta-button', {
+    .from('#hero-cta', {
         duration: 0.8,
         opacity: 0,
         y: 20,
