@@ -23,11 +23,26 @@ export function initAnimations() {
 
 /* ── Hero Cinematic Entry ─────────────────────────────────────────── */
 function initHeroAnimation() {
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    // Ensure button is visible initially to prevent "disappearing" bug
+    gsap.set('#hero-cta', { opacity: 1 });
+
+    const tl = gsap.timeline({ 
+        defaults: { ease: 'power3.out' },
+        onComplete: () => {
+            // Only start pulsing once the entry completes
+            gsap.to('#hero-cta', {
+                boxShadow: '0 0 35px rgba(62,139,255,0.5)',
+                repeat: -1,
+                yoyo: true,
+                duration: 1.6,
+                ease: 'sine.inOut'
+            });
+        }
+    });
 
     tl.from('.hero-headline', {
         duration: 1.2,
-        y: 60,
+        y: 40,
         opacity: 0,
         filter: 'blur(10px)',
     })
@@ -36,28 +51,16 @@ function initHeroAnimation() {
         opacity: 0,
         y: 20
     }, '-=0.6')
-    .from('#hero-cta', {
-        duration: 0.8,
-        opacity: 0,
-        y: 20,
-        ease: 'back.out(1.7)'
-    }, '-=0.4')
+    .fromTo('#hero-cta', 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.7)' },
+        '-=0.4'
+    )
     .from('.hero-video-wrapper', {
         duration: 1.2,
         opacity: 0,
-        y: 30,
-        ease: 'power3.out'
+        y: 30
     }, '-=0.4');
-
-    // Pulsing glow on CTA
-    gsap.to('#hero-cta', {
-        boxShadow: '0 0 35px rgba(62,139,255,0.5)',
-        repeat: -1,
-        yoyo: true,
-        duration: 1.6,
-        ease: 'sine.inOut',
-        delay: 2
-    });
 }
 
 /* ── Problem Cards Narrative Scroll ─────────────────────────────────── */
